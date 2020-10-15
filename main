@@ -13,6 +13,6 @@ resource "azurerm_storage_account" "ADLv2" {
 }
 
 resource "azurerm_storage_data_lake_gen2_filesystem" "ADLv2_fs" {
-  name               = nombredatalakefilesystem
+  name               = var.name_data_lake_v2_filesystem
   storage_account_id = azurerm_storage_account.ADLv2.id 
 }
