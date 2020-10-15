@@ -2,6 +2,7 @@ data "azurerm_resource_group" "RG" {
   name = var.resource_group_name
 }
 
+
 resource "azurerm_storage_account" "ADLv2" {
   name                     = var.name_data_lake_v2
   resource_group_name      = data.azurerm_resource_group.RG.name
@@ -11,8 +12,16 @@ resource "azurerm_storage_account" "ADLv2" {
   account_kind             = "StorageV2"
   is_hns_enabled           = "true"
 }
+
+
+
+data "azurerm_storage_account" "ADLv2" {
+  id = var.storage_account_id
+}
+
+
 resource "azurerm_storage_data_lake_gen2_filesystem" "ADLv2_filesystem" {
   name               = var.namelakefilesystem
-  storage_account_id = azurerm_storage_account.ADLv2.id
+  storage_account_id = data.azurerm_storage_account.ADLv2.id
 
 }
