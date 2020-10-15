@@ -17,3 +17,9 @@ variable "name_data_lake_v2_filesystem" {
 variable "account_replication_type" {
   type        = string
 }
+variable "account_kind" {
+  type        = string
+}
+variable "is_hns_enabled" {
+  type        = string
+}
