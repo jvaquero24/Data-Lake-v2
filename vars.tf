@@ -23,6 +23,3 @@ variable "account_kind" {
 variable "is_hns_enabled" {
   type        = string
 }
-variable "azurerm_storage_account.ADLv2.id" {
-  type        = string
-}
