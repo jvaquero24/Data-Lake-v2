@@ -16,5 +16,9 @@ resource "azurerm_storage_account" "ADLv2" {
 resource "azurerm_storage_data_lake_gen2_filesystem" "ADLv2_filesystem" {
   name               = var.namelakefilesystem
   storage_account_id = azurerm_storage_account.ADLv2.id
-
 }
+
+storage_account_gen2 {
+    is_default                   = true
+    filesystem_id                = azurerm_storage_data_lake_gen2_filesystem.ADLv2_filesystem.id
+    storage_resource_id          = azurerm_storage_account.ADLv2.id
