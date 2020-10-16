@@ -23,6 +23,3 @@ variable "is_hns_enabled" {
 variable "namelakefilesystem" {
   type        = string
 }
-variable "storage_account_id" {
-  type        = string
-}
