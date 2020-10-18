@@ -19,4 +19,12 @@ resource "azurerm_storage_data_lake_gen2_filesystem" "adls" {
   properties = {
     hello = "aGVsbG8="
   }
+  
+data "azurerm_client_config" "client" {}
+
+resource "azurerm_role_assignment" "example_fs" {
+  scope                = azurerm_storage_data_lake_gen2_filesystem.adls.resource_manager_id
+  role_definition_name = "Storage Blob Data Contributor"
+  principal_id         = data.azurerm_client_config.client.object_id
+}
 }
