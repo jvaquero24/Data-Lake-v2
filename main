@@ -16,17 +16,15 @@ resource "azurerm_storage_account" "sa" {
   is_hns_enabled           = "true"
 }
 
-resource "azurerm_role_assignment" "ra" {
-  count                = local.amount_accounts
-  scope                = azurerm_storage_account.sa[count.index].id
-  role_definition_name = "Storage Blob Data Owner"
-  principal_id         = data.azurerm_client_config.current.object_id
+resource "azurerm_storage_data_lake_gen2_filesystem" "adls" {
+  storage_account_id = azurerm_storage_account.sa.id
+  name               = var.name_data_lake_filesystem
+  depends_on         = [azurerm_role_assignment.ra]
 }
 
-resource "azurerm_storage_data_lake_gen2_filesystem" "adls" {
-  storage_account_id = azurerm_storage_account.sa[floor(count.index / local.amount_containers_per_account)].id
-  name               = var.name_data_lake_filesystem
-  count              = local.amount_containers
-  depends_on         = [azurerm_role_assignment.ra]
+resource "azurerm_storage_container" "adl_container" {
+  name                  = "adl_container"
+  storage_account_name  = "${azurerm_storage_account.sa.name}"
+  container_access_type = "private"
 
 }
