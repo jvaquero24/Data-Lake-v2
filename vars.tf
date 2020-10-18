@@ -11,9 +11,6 @@ variable "tier_data_lake" {
 variable "resource_group_name" {
   type        = string
 }
-variable "account_replication_type" {
-  type        = string
-}
 variable "name_data_lake_filesystem" {
   type        = string
 }
