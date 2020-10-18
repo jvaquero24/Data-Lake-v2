@@ -14,12 +14,6 @@ variable "resource_group_name" {
 variable "account_replication_type" {
   type        = string
 }
-variable "account_kind" {
-  type        = string
-}
-variable "is_hns_enabled" {
-  type        = string
-}
 variable "name_data_lake_filesystem" {
   type        = string
 }
