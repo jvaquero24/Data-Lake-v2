@@ -20,6 +20,6 @@ variable "account_kind" {
 variable "is_hns_enabled" {
   type        = string
 }
-variable "namelakefilesystem" {
+variable "name_data_lake_filesystem" {
   type        = string
 }
