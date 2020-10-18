@@ -2,6 +2,9 @@ data "azurerm_resource_group" "RG" {
   name = var.resource_group_name
 }
 
+data "azurerm_client_config" "current" {
+
+}
 
 resource "azurerm_storage_account" "sa" {
   name                     = var.name_data_lake_v2
